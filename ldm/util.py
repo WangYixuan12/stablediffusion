@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw, ImageFont
 def autocast(f):
     def do_autocast(*args, **kwargs):
         with torch.cuda.amp.autocast(enabled=True,
-                                     dtype=torch.get_autocast_gpu_dtype(),
+                                     dtype=torch.get_autocast_dtype('cuda'),
                                      cache_enabled=torch.is_autocast_cache_enabled()):
             return f(*args, **kwargs)
 
